@@ -1,0 +1,10 @@
+import globalModel from '@/models/global';
+<% models.forEach(function(item){ %>import model<%= item.name %> from '<%= item.path %>';
+<% }) -%>
+
+export default [
+  // note the use of this which refers to observable instance of the store
+  globalModel,
+<% models.forEach(function(item){ %>  model<%= item.name %>,
+<% }) -%>
+];

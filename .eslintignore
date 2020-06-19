@@ -1,0 +1,3 @@
+node_modules/*
+**/vendors/*.js
+__DLL__/

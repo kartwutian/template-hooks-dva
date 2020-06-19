@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "assets/*": ["src/assets/*"],
+      "utils/*": ["src/utils/*"],
+      "models/*": ["src/models/*"],
+      "layout/*": ["src/layout/*"],
+      "components/*": ["src/components/*"],
+      "pages/*": ["src/pages/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["src/**/*"],
+  "experimentalDecorators": true
+}

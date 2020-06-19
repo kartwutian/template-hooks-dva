@@ -1,0 +1,23 @@
+import React from 'react';
+import CSSModules from 'react-css-modules';
+import { connect } from 'dva';
+import {} from 'antd';
+import { delay } from 'utils/helper';
+import {} from '<%=servicePath%>';
+
+import styles from '<%= stylePath%>';
+
+function <%= modelName%>Page(props) {
+  const { history } = props;
+  return (
+    <div styleName="page">
+      <p><%= modelName%>Page</p>
+    </div>
+  );
+}
+
+export default connect(({ <%= modelName%> }) => ({ <%= modelName%> }))(
+  CSSModules(<%= modelName%>Page, styles, {
+    allowMultiple: true,
+  }),
+);
