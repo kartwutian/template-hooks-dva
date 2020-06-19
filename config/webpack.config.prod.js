@@ -12,8 +12,7 @@ let OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
 let UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 
 const commonConfig = require('./webpack.config.common')();
-const { PATHS, publicPath, DLL_ENTRY } = require('./config');
-const { webpack: webpackConfig } = require('../src/pages.js');
+const { PATHS, publicPath, DLL_ENTRY, webpackConfig } = require('./config');
 
 const htmlWebpackPluginOptionsExtend = webpackConfig
   ? webpackConfig.htmlWebpackPlugin || {}

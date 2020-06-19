@@ -5,8 +5,7 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const commonConfig = require('./webpack.config.common')();
-const { PATHS, DLL_ENTRY_DEV } = require('./config');
-const { webpack: webpackConfig } = require('../src/pages.js');
+const { PATHS, DLL_ENTRY_DEV, webpackConfig } = require('./config');
 
 const publicPath = '/'; // 开发时统一publicPath为 '/'
 const htmlWebpackPluginOptionsExtend = webpackConfig

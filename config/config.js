@@ -30,4 +30,5 @@ module.exports = {
     ...DLL_ENTRY_EXTEND,
   },
   DLL_ENTRY_DEV: {}, // 开发时的动态链接库
+  webpackConfig,
 };
