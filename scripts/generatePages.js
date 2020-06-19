@@ -37,6 +37,7 @@
   const utilsPath = path.resolve(__dirname, '../src/utils');
   const storePath = path.resolve(__dirname, '../src/models');
   const sourceCodePath = path.resolve(__dirname, '../src');
+  const routerPath = path.resolve(__dirname, '../src/router');
 
   const generatePages = async (pageConfig) => {
     let { path: route } = pageConfig;
@@ -155,7 +156,7 @@
 
   await generateFile(
     {
-      filePath: path.resolve(sourceCodePath, '_router.js'), // 取名下划线开头，代表内部生成
+      filePath: path.resolve(routerPath, '_routes.js'), // 取名下划线开头，代表内部生成
       template: ejs.render(templateRouter.toString(), {
         router: JSON.stringify(routerParser(pages), null, 2),
       }),

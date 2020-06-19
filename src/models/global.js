@@ -1,10 +1,25 @@
+import routes from '@/router/_routes';
+
 export default {
   namespace: 'global',
-  state: [],
+  state: {
+    routes,
+    MENU_SELECTKEYS: [], // 菜单选中的key
+    USER_INFO: {
+      name: 'bhz',
+    },
+  },
   reducers: {
-    add(state, { payload: todo }) {
-      // 保存数据到 state
-      return [...state, todo];
+    updateByKey(state, { payload }) {
+      // 只支持根属性级别的变更
+      if (!payload) {
+        console.log('缺少payload');
+        return;
+      }
+      return {
+        ...state,
+        ...payload,
+      };
     },
   },
   effects: {
