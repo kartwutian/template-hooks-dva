@@ -9,7 +9,7 @@
       "assets/*": ["src/assets/*"],
       "utils/*": ["src/utils/*"],
       "models/*": ["src/models/*"],
-      "layout/*": ["src/layout/*"],
+      "layouts/*": ["src/layouts/*"],
       "components/*": ["src/components/*"],
       "pages/*": ["src/pages/*"]
     }

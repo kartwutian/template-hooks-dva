@@ -32,7 +32,7 @@ module.exports = {
       path: 'pages/Login/index',
       route: '/login',
       name: '登录',
-      isInLayout: false, // 标记不包括layout
+      layout: 'layouts/App/index', // layout路径
       isHideInMenus: true, // 代表在菜单栏隐藏菜单
     },
     {

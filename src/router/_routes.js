@@ -6,7 +6,7 @@ const router = [
     "routes": [],
     "path": "pages/Login/index",
     "name": "登录",
-    "isInLayout": false,
+    "layout": "layouts/App/index",
     "isHideInMenus": true
   },
   {

@@ -26,16 +26,35 @@ const renderRouter = (routes, app) => {
               if (route.authority) {
                 isAuth = auth(route.authority);
               }
+              let LayoutComp = null;
+              if (route.layout) {
+                const layoutPathSuffix = route.layout
+                  .split('/')
+                  .slice(1)
+                  .join('/');
+                LayoutComp = dynamic({
+                  app,
+                  component: () => import('layouts/' + layoutPathSuffix),
+                });
+              }
               const pathSuffix = route.path.split('/').slice(1).join('/');
               // webpack require 的地址会被转为正则，详见https://blog.csdn.net/weixin_33738555/article/details/88766052
               const Temp = dynamic({
                 app,
                 component: () => import('pages/' + pathSuffix),
               });
+              console.log(LayoutComp);
+
               return isAuth ? (
                 <Suspense fallback={<Loading />}>
                   <div className="animated faster fadeInRight">
-                    <Temp {...props} />
+                    {LayoutComp ? (
+                      <LayoutComp {...props}>
+                        <Temp {...props} />
+                      </LayoutComp>
+                    ) : (
+                      <Temp {...props} />
+                    )}
                   </div>
                 </Suspense>
               ) : (
@@ -64,7 +83,6 @@ function AppRouter(props) {
     app,
     global: { routes },
   } = props;
-  console.log(props);
   return (
     <Router history={history}>
       <>
@@ -73,12 +91,7 @@ function AppRouter(props) {
           <Route
             path="/404"
             render={(props) => {
-              console.log(props);
-              return (
-                <App {...props}>
-                  <Exception type="404" {...props} />
-                </App>
-              );
+              return <Exception type="404" {...props} />;
             }}
           />
           <Redirect to="/404"></Redirect>
