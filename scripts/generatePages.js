@@ -4,6 +4,7 @@
   const path = require('path');
   const fs = require('fs');
   const ejs = require('ejs');
+  const cpx = require('cpx');
   const routerParser = require('./routerParser');
   const { generateFile, getStat } = require('./generateFile.js');
 
@@ -44,6 +45,7 @@
     const { template } = pageConfig;
     let templatePage = defaultTemplatePage;
     let templateModel = defaultTemplateModel;
+    let compInTemplatePath; // 组件源目录
 
     if (!route) return; // 如果没有path，说明不用生成页面，是用于创建menus
 
@@ -65,6 +67,11 @@
         console.log(`使用 ${template} model模板`);
         templateModel = fs.readFileSync(templateModelPath);
       }
+
+      compInTemplatePath = path.resolve(
+        path.dirname(templatePagePath),
+        'components',
+      );
     }
 
     // 做一些初始路由处理
@@ -80,6 +87,7 @@
     }
     const filename = path.win32.basename(basePath);
     const dirname = path.dirname(basePath);
+    const compDestName = path.resolve(dirname, 'components');
     // console.log(basePath);
     // 注入page的参数, 过滤掉最后的index
     const modelName = `${path
@@ -103,6 +111,15 @@
         config: pageConfig,
       }),
     });
+    //模板组件目录存在，且页面目录中没有components目录，则拷贝模板组件到相应页面下
+    if (
+      compInTemplatePath &&
+      (await getStat(compInTemplatePath)) &&
+      !(await getStat(compDestName))
+    ) {
+      const compSrcFiles = path.join(compInTemplatePath, '**/*'); // glob
+      cpx.copySync(compSrcFiles, compDestName);
+    }
     // 生成less文件
     await generateFile({
       filePath: `${basePath}.less`,

@@ -6,7 +6,7 @@ const fs = require('fs');
  * @param {string} path 路径
  */
 function getStat(filePath) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     fs.stat(filePath, (err, stats) => {
       if (err) {
         resolve(false);
@@ -22,8 +22,8 @@ function getStat(filePath) {
  * @param {string} dir 路径
  */
 function mkdir(dir) {
-  return new Promise(resolve => {
-    fs.mkdir(dir, err => {
+  return new Promise((resolve) => {
+    fs.mkdir(dir, (err) => {
       if (err) {
         resolve(false);
       } else {
@@ -59,7 +59,7 @@ async function dirExists(dir) {
   return mkdirStatus;
 }
 
-const beforeGenerateFile = async filePath => {
+const beforeGenerateFile = async (filePath) => {
   const isFileExist = await getStat(filePath);
   if (isFileExist) {
     // eslint-disable-next-line prefer-promise-reject-errors
