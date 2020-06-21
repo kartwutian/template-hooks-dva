@@ -6,17 +6,15 @@ const router = [
     "routes": [],
     "path": "pages/Login/index",
     "name": "登录",
-    "layout": "layouts/App/index",
     "isHideInMenus": true
   },
   {
-    "route": "/test",
+    "route": "/list",
     "routes": [],
-    "path": "pages/Test/index",
-    "name": "测试",
-    "authority": [
-      "user"
-    ]
+    "path": "pages/List/index",
+    "name": "列表",
+    "template": "list",
+    "layout": "layouts/App/index"
   }
 ]
 

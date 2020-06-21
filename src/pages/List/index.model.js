@@ -1,8 +1,8 @@
 import { delay } from 'utils/helper';
-import {} from './_service.Test.js';
+import {} from './_service.List.js';
 
 export default {
-  namespace: 'Test',
+  namespace: 'List',
   state: [],
   reducers: {
     add(state, { payload: todo }) {

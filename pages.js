@@ -32,14 +32,14 @@ module.exports = {
       path: 'pages/Login/index',
       route: '/login',
       name: '登录',
-      layout: 'layouts/App/index', // layout路径
       isHideInMenus: true, // 代表在菜单栏隐藏菜单
     },
     {
-      path: 'pages/Test/index',
-      route: '/test',
-      name: '测试',
-      authority: ['user'], // 用于权限控制，菜单和路由
+      path: 'pages/List/index',
+      route: '/list',
+      name: '列表',
+      template: 'list',
+      layout: 'layouts/App/index', // layout路径
     },
   ],
 };
