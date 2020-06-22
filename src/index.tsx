@@ -2,19 +2,21 @@ import '@babel/polyfill';
 
 import React from 'react';
 // import ReactDom from 'react-dom';
-import dva from 'dva';
-import { createHashHistory } from 'history';
+import dva, { DvaInstance, RouterAPI } from 'dva';
+import {} from 'dva/router';
+import { createHashHistory, History } from 'history';
 // import { Button } from 'antd';
 import Router from './router/index';
 import { registerModels } from '@/models/index';
-export const appHistory = createHashHistory();
+
+export const appHistory: History = createHashHistory();
 
 // const Test = () => {
 //   return <Button>123</Button>;
 // };
 
-const app = dva({
-  history: createHashHistory(),
+const app: DvaInstance = dva({
+  history: appHistory,
   onHmr: () => {},
 });
 
@@ -22,7 +24,7 @@ const app = dva({
 registerModels(app);
 
 // 定义路由
-app.router((props) => {
+app.router((props: RouterAPI) => {
   return <Router {...props} />;
 });
 
@@ -32,5 +34,6 @@ app.start('#root');
 // ReactDom.render(<Root />, document.getElementById('root'));
 
 if (module.hot) {
+  console.log(module);
   module.hot.accept();
 }
