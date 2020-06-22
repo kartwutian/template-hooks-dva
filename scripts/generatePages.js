@@ -103,11 +103,11 @@
 
     // 生成页面文件
     await generateFile({
-      filePath: `${basePath}.js`,
+      filePath: `${basePath}.tsx`,
       template: ejs.render(templatePage.toString(), {
         modelName,
         stylePath: `./${filename}.less`,
-        servicePath: `./_service.${serviceName}.js`,
+        servicePath: `./_service.${serviceName}.ts`,
         config: pageConfig,
       }),
     });
@@ -128,16 +128,16 @@
     });
     // 生成model文件
     await generateFile({
-      filePath: `${basePath}.model.js`,
+      filePath: `${basePath}.model.ts`,
       template: ejs.render(templateModel.toString(), {
         modelName,
-        servicePath: `./_service.${serviceName}.js`,
+        servicePath: `./_service.${serviceName}.ts`,
         config: pageConfig,
       }),
     });
     // 生成service文件
     await generateFile({
-      filePath: path.resolve(dirname, `_service.${serviceName}.js`),
+      filePath: path.resolve(dirname, `_service.${serviceName}.ts`),
       template: ejs.render(templateService.toString(), {
         name: modelName,
         list: api[modelName] || [],
@@ -163,7 +163,7 @@
 
   await generateFile(
     {
-      filePath: path.resolve(storePath, '_models.js'),
+      filePath: path.resolve(storePath, '_models.ts'),
       template: ejs.render(templateStore.toString(), {
         models,
       }),
@@ -173,7 +173,7 @@
 
   await generateFile(
     {
-      filePath: path.resolve(routerPath, '_routes.js'), // 取名下划线开头，代表内部生成
+      filePath: path.resolve(routerPath, '_routes.ts'), // 取名下划线开头，代表内部生成
       template: ejs.render(templateRouter.toString(), {
         router: JSON.stringify(routerParser(pages), null, 2),
       }),

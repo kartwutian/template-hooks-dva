@@ -15,9 +15,7 @@ export const appHistory = createHashHistory();
 
 const app = dva({
   history: createHashHistory(),
-  onHmr: () => {
-    console.log('1222222222222222222222222');
-  },
+  onHmr: () => {},
 });
 
 // 注册所有模块

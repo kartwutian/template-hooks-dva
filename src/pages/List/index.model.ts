@@ -1,5 +1,5 @@
 import { delay } from 'utils/helper';
-import {} from './_service.List.js';
+import {} from './_service.List.ts';
 
 export default {
   namespace: 'List',

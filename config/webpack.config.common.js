@@ -4,7 +4,7 @@ const { PATHS, publicPath } = require('./config');
 
 module.exports = function () {
   return {
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output: {
       filename: '[name].[hash:5].js',
       path: PATHS.dist,
@@ -15,7 +15,7 @@ module.exports = function () {
         '/react|react-dom|mobx|mobx-react|axios|react-css-modules|react-router-dom/', // 不去解析三方库
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(tsx|ts|jsx|js)$/,
           exclude: /node_modules/,
           include: PATHS.src,
           use: 'happypack/loader?id=js',
@@ -62,7 +62,7 @@ module.exports = function () {
       }),
     ],
     resolve: {
-      extensions: ['.js', '.jsx'],
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
       alias: {
         '@': path.resolve(PATHS.src),
         assets: path.resolve(PATHS.src, 'assets'),

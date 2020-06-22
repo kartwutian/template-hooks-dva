@@ -25,7 +25,7 @@ const DllReferencePlugins = Object.keys(DLL_ENTRY_DEV).map((name) => {
 module.exports = function () {
   return merge(commonConfig, {
     mode: 'development',
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output: {
       filename: '[name].[hash:5].js',
       path: PATHS.distDev,

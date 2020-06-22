@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+ import React, { useState } from 'react';
 import { connect } from 'dva';
 import CSSModules from 'react-css-modules';
 import { Card, Table, Tag, Button, Row } from 'antd';
@@ -57,8 +57,6 @@ function ListPage() {
     },
   ];
 
-  // const store = useStore('modelList'); // 注意store里面的数据不要使用解构赋值
-  // console.log(store);
 
   return (
     <>
