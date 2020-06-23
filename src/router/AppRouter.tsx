@@ -2,16 +2,18 @@
 import React, { lazy, Suspense } from 'react';
 import { Router, Route, Switch, Redirect } from 'dva/router';
 import dynamic from 'dva/dynamic';
-import { connect } from 'dva';
+import { connect, DvaInstance } from 'dva';
 import Loading from 'components/Loading';
 import Exception from 'components/Exception/index.js';
-import App from '@/layouts/App/index';
 import auth from 'utils/auth';
+import { RouteType } from '@/router/_routes';
 
-const renderRouter = (routes, app) => {
-  const children = [];
+type childType = JSX.Element | null;
 
-  function renderRoutes(arr) {
+const renderRouter = (routes: RouteType[], app: DvaInstance) => {
+  const children: childType[] = [];
+
+  function renderRoutes(arr: RouteType[]) {
     arr.forEach((route) => {
       if (!route.path) {
         children.push(null);
@@ -26,7 +28,7 @@ const renderRouter = (routes, app) => {
               if (route.authority) {
                 isAuth = auth(route.authority);
               }
-              let LayoutComp = null;
+              let LayoutComp: any = null;
               if (route.layout) {
                 const layoutPathSuffix = route.layout
                   .split('/')
@@ -39,7 +41,7 @@ const renderRouter = (routes, app) => {
               }
               const pathSuffix = route.path.split('/').slice(1).join('/');
               // webpack require 的地址会被转为正则，详见https://blog.csdn.net/weixin_33738555/article/details/88766052
-              const Temp = dynamic({
+              const Temp: any = dynamic({
                 app,
                 component: () => import('pages/' + pathSuffix),
               });
