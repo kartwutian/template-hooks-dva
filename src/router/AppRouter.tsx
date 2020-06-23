@@ -4,7 +4,7 @@ import { Router, Route, Switch, Redirect } from 'dva/router';
 import dynamic from 'dva/dynamic';
 import { connect, DvaInstance } from 'dva';
 import Loading from 'components/Loading';
-import Exception from 'components/Exception/index.js';
+import Exception from 'components/Exception/index';
 import auth from 'utils/auth';
 import { RouteType } from '@/router/_routes';
 

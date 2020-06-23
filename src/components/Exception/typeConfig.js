@@ -14,11 +14,6 @@ const config = {
     title: '500',
     desc: '抱歉，服务器出错了',
   },
-  error: {
-    img: 'https://gw.alipayobjects.com/zos/rmsportal/RVRUAYdCGeYNBWoKiIwB.svg',
-    title: 'error',
-    desc: '抱歉，网站出错啦！',
-  },
 };
 
 export default config;

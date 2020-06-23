@@ -1,6 +1,22 @@
-import routes from '@/router/_routes';
+import routes, { RouteType } from '@/router/_routes';
+import { Model } from 'dva';
 
-export default {
+type StringOrNumber = string | number;
+interface USER_INFO {
+  name?: string;
+  [prop: string]: any;
+}
+
+interface ModelState {
+  routes: RouteType[];
+  MENU_SELECTKEYS: StringOrNumber[];
+  USER_INFO: USER_INFO;
+}
+interface ModelType extends Model {
+  state: ModelState;
+}
+
+const model: ModelType = {
   namespace: 'global',
   state: {
     routes,
@@ -40,3 +56,5 @@ export default {
     },
   },
 };
+
+export default model;
